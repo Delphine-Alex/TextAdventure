@@ -64,8 +64,8 @@ public class Game {
 				end();
 			} else {
 				System.out.println("\n-------------------------------------------\n");
-				System.out.println("Guard: Hello there, stranger! So your name is " + playerName + "? Sorry but we cannot let stranger enter our town.\n\n");
-				System.out.println("(Press enter to continue)");
+				System.out.println("Guard: Hello there, stranger! So your name is " + playerName + "? Sorry but we cannot let stranger enter our town.");
+				System.out.println("\n\n(Press enter to continue)");
 				System.out.println("\n-------------------------------------------\n");
 				enterScanner.nextLine();
 				townGate();
@@ -73,12 +73,16 @@ public class Game {
 		} else if (number == 2) {
 			playerHP -= 2;
 			System.out.println("\n-------------------------------------------\n");
-			System.out.println("Guard: Hey don't be stupid.\n\nThe guard hit you so hard and you gave up.\n(You received 2 damage)\n");
-			System.out.println("Your HP: " + playerHP);
+			System.out.println("Guard: Hey don't be stupid.\n\nThe guard hit you so hard and you gave up.\n(You received 2 damage)");
+			System.out.println("\nYour HP: " + playerHP);
 			System.out.println("\n\n(Press enter to continue)");
 			System.out.println("\n-------------------------------------------\n");
-			enterScanner.nextLine();
-			townGate();
+			if (playerHP < 1) {
+				dead();
+			} else {
+				enterScanner.nextLine();
+				townGate();
+			}
 		} else if (number == 3) {
 			crossRoad();
 		} else {
@@ -117,8 +121,14 @@ public class Game {
 		
 		System.out.println("\n-------------------------------------------\n");
 		System.out.println("There is a river. You drink the water and rest at the riverside.");
-		System.out.println("Your HP are recovered.");
-		playerHP += 1;
+		
+		if (playerHP == 15) {
+			System.out.println("Your HP is already full, you cannot regain life.");
+		} else {
+			System.out.println("Your HP are recovered.");
+			playerHP += 1;
+		}
+		
 		System.out.println("\nYour HP: " + playerHP);
 		System.out.println("\n\n1: Go back to the crossroad");
 		System.out.println("\n-------------------------------------------\n");
@@ -235,19 +245,19 @@ public class Game {
 	}
 	
 	public void dead() {
-		System.out.println("\n------------------------------------------------------------------\n");
+		System.out.println("\n-------------------------------------------\n");
 		System.out.println("You are dead!!!");
 		System.out.println("\n\nGAME OVER");
-		System.out.println("\n------------------------------------------------------------------\n");
+		System.out.println("\n-------------------------------------------\n");
 
 	}
 	
 	public void win() {
-		System.out.println("\n------------------------------------------------------------------\n");
+		System.out.println("\n-------------------------------------------\n");
 		System.out.println("You killed the dragon! The monster dropped a ring.");
 		System.out.println("You obtaind a silver ring!\n");
 		System.out.println("1: Go back to the crossroad");
-		System.out.println("\n------------------------------------------------------------------\n");
+		System.out.println("\n-------------------------------------------\n");
 
 		silverRing = 1;
 
@@ -263,11 +273,11 @@ public class Game {
 	
 	public void end() {
 		
-		System.out.println("\n------------------------------------------------------------------\n");
+		System.out.println("\n-------------------------------------------\n");
 		System.out.println("Guard: Oh you killed that dragon!?? Great!");
 		System.out.println("Guard: It seems you are a trustworthy guy. Welcome to our town!");
 		System.out.println("\n\nTHE END");
-		System.out.println("\n------------------------------------------------------------------\n");
+		System.out.println("\n-------------------------------------------\n");
 	}
 		
 		

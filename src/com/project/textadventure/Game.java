@@ -68,7 +68,7 @@ public class Game {
 		} else if (number == 2) {
 			playerHP -= 2;
 			System.out.println("\n-------------------------------------------\n");
-			System.out.println("Guard: Hey don't be stupid.\n\nThe guard hit you so hard and you gave up.\n(You received 2 damages)\n");
+			System.out.println("Guard: Hey don't be stupid.\n\nThe guard hit you so hard and you gave up.\n(You received 2 damage)\n");
 			System.out.println("Your HP: " + playerHP);
 			System.out.println("\n\n(Press enter to continue)");
 			enterScanner.nextLine();
@@ -84,17 +84,40 @@ public class Game {
 		
 		System.out.println("\n-------------------------------------------\n");
 		System.out.println("Your are at a crossroad. If you go south, you will go back to the town.");
-		System.out.println("");
-		System.out.println("What do you want to do now?");
-		System.out.println("");
+		System.out.println("\nWhat do you want to do now?\n");
 		System.out.println("1: Go north");
 		System.out.println("2: Go east");
 		System.out.println("3: Go south");
 		System.out.println("4: Go west");
 		System.out.println("\n-------------------------------------------\n");
 	
+		number = scanner.nextInt();
+		
+		if (number == 1) {
+			north();
+		} else if (number == 2) {
+			east();
+		} else if (number == 3) {
+			townGate();
+		} else if (number == 4) {
+			west();
+		} else {
+			crossRoad();
+		}
 	
+	}
 	
+	public void north() {
+		
+	}
+	
+	public void east() {
+			
+	}
+	
+	public void west() {
+		
+		
 	}
 		
 		

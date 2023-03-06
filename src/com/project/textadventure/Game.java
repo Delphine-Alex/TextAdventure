@@ -64,7 +64,7 @@ public class Game {
 				end();
 			} else {
 				System.out.println("\n-------------------------------------------\n");
-				System.out.println("Guard: Hello there, stranger! So your name is " + playerName + "? Sorry but we cannot let stranger enter our town.");
+				System.out.println("Guard: Hello there, stranger! So your name is " + playerName + "? Sorry but we cannot let a stranger enter our town.");
 				System.out.println("\n\n(Press enter to continue)");
 				System.out.println("\n-------------------------------------------\n");
 				enterScanner.nextLine();
@@ -73,7 +73,7 @@ public class Game {
 		} else if (number == 2) {
 			playerHP -= 2;
 			System.out.println("\n-------------------------------------------\n");
-			System.out.println("Guard: Hey don't be stupid.\n\nThe guard hit you so hard and you gave up.\n(You received 2 damage)");
+			System.out.println("Guard: Hey don't be stupid.\n\nThe guard hit you so hard and you give up.\n(You received 2 damage)");
 			System.out.println("\nYour HP: " + playerHP);
 			System.out.println("\n\n(Press enter to continue)");
 			System.out.println("\n-------------------------------------------\n");
@@ -125,7 +125,7 @@ public class Game {
 		if (playerHP == 15) {
 			System.out.println("Your HP is already full, you cannot regain life.");
 		} else {
-			System.out.println("Your HP are recovered.");
+			System.out.println("You recover 1 HP.");
 			playerHP += 1;
 		}
 		
@@ -145,7 +145,7 @@ public class Game {
 	public void east() {
 		
 		System.out.println("\n-------------------------------------------\n");
-		System.out.println("You walk into a forest and found a Long Sword!");
+		System.out.println("You walk into a forest and find a Long Sword!");
 		playerWeapon = "Long Sword";
 		System.out.println("Your weapon: " + playerWeapon);
 		System.out.println("\n\n1: Go back to the crossroad");
@@ -223,7 +223,7 @@ public class Game {
 		
 		
 		System.out.println("\n-------------------------------------------\n");
-		System.out.println("You attacked the dragon and gave " + playerDamage + " damage!");
+		System.out.println("You attacked the dragon and dealt " + playerDamage + " damage!");
 		
 		monsterHP -= playerDamage; 
 		System.out.println("Dragon HP: " + monsterHP);
@@ -231,7 +231,7 @@ public class Game {
 		if (monsterHP < 1) {
 			win();
 		} else if (monsterHP > 0) {
-			System.out.println("\nThe dragon attacked you and gave " + monsterDamage + " damage!");
+			System.out.println("\nThe dragon attacked you and dealt " + monsterDamage + " damage!");
 			
 			playerHP -= monsterDamage;
 			System.out.println("Your HP: " + playerHP);
@@ -255,7 +255,7 @@ public class Game {
 	public void win() {
 		System.out.println("\n-------------------------------------------\n");
 		System.out.println("You killed the dragon! The monster dropped a ring.");
-		System.out.println("You obtaind a silver ring!\n");
+		System.out.println("You obtained a silver ring!\n");
 		System.out.println("1: Go back to the crossroad");
 		System.out.println("\n-------------------------------------------\n");
 

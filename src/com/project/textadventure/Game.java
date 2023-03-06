@@ -5,9 +5,11 @@ import java.util.Scanner;
 public class Game {
 	
 	int playerHP;
+	int monsterHP;
 	String playerWeapon;
 	String playerName;
 	int number;
+	int silverRing;
 	
 	Scanner scanner;
 	Scanner enterScanner;
@@ -21,11 +23,12 @@ public class Game {
 		
 	}
 	
-	
 	public void playerSetUp() {
 			
 		
 		playerHP = 15;
+		
+		monsterHP = 20;
 			
 		playerWeapon = "Knife";
 		
@@ -33,6 +36,7 @@ public class Game {
 		System.out.println("Your weapon: " + playerWeapon);
 			
 		scanner = new Scanner(System.in);
+		enterScanner = new Scanner(System.in);
 			
 		System.out.println("Please enter your name:");
 			
@@ -41,7 +45,6 @@ public class Game {
 		System.out.println("");
 		System.out.println("Hello " + playerName + ", let's start your adventure!");
 	}
-	
 	
 	public void townGate() {
 		
@@ -54,18 +57,19 @@ public class Game {
 		System.out.println("3: Leave");
 		System.out.println("\n-------------------------------------------\n");
 		
-		number = scanner.nextInt();
-		
-		enterScanner = new Scanner(System.in);
-		
+		number = scanner.nextInt();	
 		
 		if (number == 1) {
-			System.out.println("\n-------------------------------------------\n");
-			System.out.println("Guard: Hello there, stranger! So your name is " + playerName + "? Sorry but we cannot let stranger enter our town.\n\n");
-			System.out.println("(Press enter to continue)");
-			System.out.println("\n-------------------------------------------\n");
-			enterScanner.nextLine();
-			townGate();
+			if(silverRing == 1) {
+				end();
+			} else {
+				System.out.println("\n-------------------------------------------\n");
+				System.out.println("Guard: Hello there, stranger! So your name is " + playerName + "? Sorry but we cannot let stranger enter our town.\n\n");
+				System.out.println("(Press enter to continue)");
+				System.out.println("\n-------------------------------------------\n");
+				enterScanner.nextLine();
+				townGate();
+			}
 		} else if (number == 2) {
 			playerHP -= 2;
 			System.out.println("\n-------------------------------------------\n");
@@ -124,7 +128,7 @@ public class Game {
 		if (number == 1) {
 			crossRoad();
 		} else {
-			crossRoad();
+			north();
 		}
 	}
 	
@@ -142,14 +146,128 @@ public class Game {
 		if (number == 1) {
 			crossRoad();
 		} else {
-			crossRoad();
+			east();
 		}
 			
 	}
 	
 	public void west() {
 		
+		System.out.println("\n-------------------------------------------\n");
+		System.out.println("You encounter a dragon!");
+		System.out.println("\nWhat do you want to do?\n");
+		System.out.println("1: Fight");
+		System.out.println("2: Run");
+		System.out.println("\n-------------------------------------------\n");
 		
+		number = scanner.nextInt();
+		
+		if (number == 1) {
+			fight();
+		} else if (number == 2) {
+			crossRoad();
+		} else {
+			west();
+		}
+		
+	}
+	
+	public void fight() {
+		
+		System.out.println("\n-------------------------------------------\n");
+		
+		System.out.println("Dragon HP: " + monsterHP);
+		System.out.println("Your HP: " + playerHP);
+		
+		System.out.println("\nYour weapon: " + playerWeapon);
+		
+		System.out.println("\nWhat do you want to do now?\n");
+		System.out.println("1: Attack");
+		System.out.println("2: Run");
+		System.out.println("\n-------------------------------------------\n");
+		
+		number = scanner.nextInt();
+		
+		if (number == 1) {
+			attack();
+		} else if (number == 2) {
+			crossRoad();
+		} else {
+			fight();
+		}
+		
+	}
+	
+	public void attack() {
+		
+		int playerDamage = 0;
+		
+		if (playerWeapon.equals("Knife")) {
+			playerDamage = new java.util.Random().nextInt(6);
+		} else {
+			playerDamage = new java.util.Random().nextInt(9);
+		}
+		
+		int monsterDamage = 0;
+		monsterDamage = new java.util.Random().nextInt(5);
+		
+		
+		System.out.println("\n-------------------------------------------\n");
+		System.out.println("You attacked the dragon and gave " + playerDamage + " damage!");
+		
+		monsterHP -= playerDamage; 
+		System.out.println("Dragon HP: " + monsterHP);
+		
+		if (monsterHP < 1) {
+			win();
+		} else if (monsterHP > 0) {
+			System.out.println("\nThe dragon attacked you and gave " + monsterDamage + " damage!");
+			
+			playerHP -= monsterDamage;
+			System.out.println("Your HP: " + playerHP);
+			
+			if (playerHP < 1) {
+				dead();
+			} else if (playerHP > 0) {
+				fight();
+			}
+		}
+	}
+	
+	public void dead() {
+		System.out.println("\n------------------------------------------------------------------\n");
+		System.out.println("You are dead!!!");
+		System.out.println("\n\nGAME OVER");
+		System.out.println("\n------------------------------------------------------------------\n");
+
+	}
+	
+	public void win() {
+		System.out.println("\n------------------------------------------------------------------\n");
+		System.out.println("You killed the dragon! The monster dropped a ring.");
+		System.out.println("You obtaind a silver ring!\n");
+		System.out.println("1: Go back to the crossroad");
+		System.out.println("\n------------------------------------------------------------------\n");
+
+		silverRing = 1;
+
+		number = scanner.nextInt();
+		
+		if (number == 1) {
+			crossRoad();
+		} else {
+			win();
+		}
+
+	}
+	
+	public void end() {
+		
+		System.out.println("\n------------------------------------------------------------------\n");
+		System.out.println("Guard: Oh you killed that dragon!?? Great!");
+		System.out.println("Guard: It seems you are a trustworthy guy. Welcome to our town!");
+		System.out.println("\n\nTHE END");
+		System.out.println("\n------------------------------------------------------------------\n");
 	}
 		
 		

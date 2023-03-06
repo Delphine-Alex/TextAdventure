@@ -48,9 +48,7 @@ public class Game {
 		System.out.println("\n-------------------------------------------\n");
 		System.out.println("Your are at the gate of the town.");
 		System.out.println("A guard is standing in front of you.");
-		System.out.println("");
-		System.out.println("What do you want to do?");
-		System.out.println("");
+		System.out.println("\nWhat do you want to do?\n");
 		System.out.println("1: Talk to the guard");
 		System.out.println("2: Attack the guard");
 		System.out.println("3: Leave");
@@ -63,23 +61,40 @@ public class Game {
 		
 		if (number == 1) {
 			System.out.println("\n-------------------------------------------\n");
-			System.out.println("Guard: Hello there, stranger! So your name is " + playerName + "? Sorry but we cannot let stranger enter our town.\n");
-			System.out.println("\n(Press enter to continue)");
+			System.out.println("Guard: Hello there, stranger! So your name is " + playerName + "? Sorry but we cannot let stranger enter our town.\n\n");
+			System.out.println("(Press enter to continue)");
 			enterScanner.nextLine();
 			townGate();
-		}
-		if (number == 2) {
+		} else if (number == 2) {
 			playerHP -= 2;
 			System.out.println("\n-------------------------------------------\n");
 			System.out.println("Guard: Hey don't be stupid.\n\nThe guard hit you so hard and you gave up.\n(You received 2 damages)\n");
 			System.out.println("Your HP: " + playerHP);
-			System.out.println("\n(Press enter to continue)");
+			System.out.println("\n\n(Press enter to continue)");
 			enterScanner.nextLine();
 			townGate();
+		} else if (number == 3) {
+			crossRoad();
+		} else {
+			townGate();
 		}
-		if (number == 3) {
-			
-		}
+	}
+	
+	public void crossRoad () {
+		
+		System.out.println("\n-------------------------------------------\n");
+		System.out.println("Your are at a crossroad. If you go south, you will go back to the town.");
+		System.out.println("");
+		System.out.println("What do you want to do now?");
+		System.out.println("");
+		System.out.println("1: Go north");
+		System.out.println("2: Go east");
+		System.out.println("3: Go south");
+		System.out.println("4: Go west");
+		System.out.println("\n-------------------------------------------\n");
+	
+	
+	
 	}
 		
 		

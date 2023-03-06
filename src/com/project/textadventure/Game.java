@@ -63,6 +63,7 @@ public class Game {
 			System.out.println("\n-------------------------------------------\n");
 			System.out.println("Guard: Hello there, stranger! So your name is " + playerName + "? Sorry but we cannot let stranger enter our town.\n\n");
 			System.out.println("(Press enter to continue)");
+			System.out.println("\n-------------------------------------------\n");
 			enterScanner.nextLine();
 			townGate();
 		} else if (number == 2) {
@@ -71,6 +72,7 @@ public class Game {
 			System.out.println("Guard: Hey don't be stupid.\n\nThe guard hit you so hard and you gave up.\n(You received 2 damage)\n");
 			System.out.println("Your HP: " + playerHP);
 			System.out.println("\n\n(Press enter to continue)");
+			System.out.println("\n-------------------------------------------\n");
 			enterScanner.nextLine();
 			townGate();
 		} else if (number == 3) {
@@ -109,9 +111,39 @@ public class Game {
 	
 	public void north() {
 		
+		System.out.println("\n-------------------------------------------\n");
+		System.out.println("There is a river. You drink the water and rest at the riverside.");
+		System.out.println("Your HP are recovered.");
+		playerHP += 1;
+		System.out.println("\nYour HP: " + playerHP);
+		System.out.println("\n\n1: Go back to the crossroad");
+		System.out.println("\n-------------------------------------------\n");
+		
+		number = scanner.nextInt();
+		
+		if (number == 1) {
+			crossRoad();
+		} else {
+			crossRoad();
+		}
 	}
 	
 	public void east() {
+		
+		System.out.println("\n-------------------------------------------\n");
+		System.out.println("You walk into a forest and found a Long Sword!");
+		playerWeapon = "Long Sword";
+		System.out.println("Your weapon: " + playerWeapon);
+		System.out.println("\n\n1: Go back to the crossroad");
+		System.out.println("\n-------------------------------------------\n");
+		
+		number = scanner.nextInt();
+		
+		if (number == 1) {
+			crossRoad();
+		} else {
+			crossRoad();
+		}
 			
 	}
 	
